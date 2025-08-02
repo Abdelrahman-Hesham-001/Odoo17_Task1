@@ -1,0 +1,72 @@
+<odoo>
+
+
+    <!--Search View-->
+    <record id="todo_search_view" model="ir.ui.view">
+        <field name="name">todo search</field>
+        <field name="model">todo</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <filter name="filter_new" string="New" domain="[('status','=','new')]"/>
+                <filter name="filter_in_progress" string="In Progress" domain="[('status','=','in_progress')]"/>
+                <filter name="filter_completed" string="Completed" domain="[('status','=','completed')]"/>
+                <group>
+                    <filter name="group_by_partner" string="Assign To" context="{'group_by':'partner_id'}"/>
+                    <filter name="group_by_status" string="status" context="{'group_by':'status'}"/>
+                    <filter name="group_by_date" string="date" context="{'group_by':'date'}"/>
+
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!--  Tree View -->
+    <record id="todo_tree" model="ir.ui.view">
+        <field name="name">todo tree</field>
+        <field name="model">todo</field>
+        <field name="arch" type="xml">
+            <tree class="header_style">          <!-- Class To Make Css Style-->
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="description"/>
+                <field name="date"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="todo_view_form" model="ir.ui.view">
+        <field name="name">todo form</field>
+        <field name="model">todo</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="partner_id"/>
+                        <field name="description"/>
+                        <field name="date"/>
+                        <field name="status"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--  Action -->
+    <record id="todo_action" model="ir.actions.act_window">
+        <field name="name">All Tasks</field>
+        <field name="res_model">todo</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+</odoo>

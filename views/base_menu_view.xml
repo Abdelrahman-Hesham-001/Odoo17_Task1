@@ -1,0 +1,16 @@
+<odoo>
+    <!-- Main Menu with icon -->
+    <menuitem
+            id="menu_todo_root"
+            name="To-Do"
+            web_icon="todo_app,static/description/to-do.png"
+            sequence="10"/>
+
+    <!-- Sub Menu (All Tasks) -->
+    <menuitem
+            id="todo_menu_item"
+            name="All Tasks"
+            parent="menu_todo_root"
+            action="todo_action"
+            sequence="10"/>
+</odoo>
